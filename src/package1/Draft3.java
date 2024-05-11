@@ -28,7 +28,7 @@ public class Draft3 {
         driver.get("https://gmail.com");
         
         driver.findElement(By.xpath("//div[contains(text(),'Compose')]")).click(); //clicks on compose button
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
         //interacting with email elements
         driver.findElement(By.cssSelector(".agP.aFw")).click(); //clicks on To field
