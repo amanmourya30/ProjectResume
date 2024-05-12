@@ -5,11 +5,11 @@ import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Draft4withLoops {
@@ -27,56 +27,31 @@ public class Draft4withLoops {
 
         driver.get("https://gmail.com");
         
-        String [] emails= {"amanmourya30@gmail.com","amanmourya069@gmail.com"};
+        String [] emails= {"amanmourya30@gmail.com","amanmourya069@gmail.com","adityakumarsept0@gmail.com"};
         for(String email:emails) {
         	
         	driver.findElement(By.xpath("//div[contains(text(),'Compose')]")).click(); //clicks on compose button
             Thread.sleep(1000);
             //interacting with email send email format elements
-         // Click on the 'To' field and enter the email address
-            WebElement toField = driver.findElement(By.cssSelector(".agP.aFw"));
-            toField.click();
-            toField.sendKeys(email , Keys.ENTER);
-
-            // Click on the 'Subject' field and enter the subject text
-            WebElement subjectField = driver.findElement(By.cssSelector(".aoT"));
-            subjectField.click();
-            subjectField.sendKeys("This is a Subject of Email.");
-
-            // Click on the 'Body' field and enter the email body
-            WebElement bodyField = driver.findElement(By.cssSelector(".Am.Al.editable.LW-avf"));
-            bodyField.click();
-            bodyField.sendKeys("This is Body of Email.");
-
-            // Click on the 'Attachment' icon
-            driver.findElement(By.cssSelector(".a1.aaA.aMZ")).click();
-            // Upload the file
-            uploadFile("C:\\check\\fileupload.exe");
-
-            // Wait for the attachment to appear
-            waitForElementToAppear(driver, By.xpath("//div[contains(@aria-label,'Attachment')]"));
-
-            // Click on the send button
-            driver.findElement(By.cssSelector(".T-I.J-J5-Ji.aoO.v7.T-I-atl.L3")).click();
-
-            // Wait for the 'Undo' message to disappear
-            invisibilityOfElementWithText(driver, By.cssSelector("#link_undo"));
-
-            System.out.println(email);
+            driver.findElement(By.cssSelector(".agP.aFw")).click(); //clicks on To field
+            driver.findElement(By.cssSelector(".agP.aFw")).sendKeys(email , Keys.ENTER); //enter email
+            driver.findElement(By.cssSelector(".aoT")).click(); //clicks on Subject field
+            driver.findElement(By.cssSelector(".aoT")).sendKeys("This is a Subject of Email."); //Enter Subject text
+            driver.findElement(By.cssSelector(".Am.Al.editable.LW-avf")).click(); //clicks on Body field
+            driver.findElement(By.cssSelector(".Am.Al.editable.LW-avf")).sendKeys("This is Body of Email."); //enter email body
+            driver.findElement(By.cssSelector(".a1.aaA.aMZ")).click(); //clicks on Attachment icon
+            Thread.sleep(2000);
+    		ProcessBuilder pb = new ProcessBuilder("C:\\check\\fileupload.exe"); //uploads resume file in check folder
+    		pb.start();
+    		waitForElementToAppear(driver, By.xpath("//div[contains(@aria-label,'Attachment')]")); //waits for file to upload completely
+    		driver.findElement(By.cssSelector(".T-I.J-J5-Ji.aoO.v7.T-I-atl.L3")).click(); //clicks on send button
+    		
+    		Thread.sleep(1000);
+    		invisibilityOfElementWithText(driver, By.cssSelector("#link_undo") );//waits for Undo message to disappear
+    		System.out.println(email);
     		
         }
-	}
-public static void uploadFile(String filePath) throws IOException {
-	    // Wait for a short duration before starting the upload process
-	    try {
-	        Thread.sleep(2000);
-	    } catch (InterruptedException e) {
-	        e.printStackTrace();
-	    }
-
-	    // Execute the file upload process
-	    ProcessBuilder pb = new ProcessBuilder(filePath);
-	    pb.start();
+        driver.quit();
 	}
 	
 public static void waitForElementToAppear(WebDriver driver, By locator) {
