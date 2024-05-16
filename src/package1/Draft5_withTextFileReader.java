@@ -43,7 +43,7 @@ public class Draft5_withTextFileReader {
 		for (String email : emailAddresses) {
 
 			driver.findElement(By.xpath("//div[contains(text(),'Compose')]")).click(); // clicks on compose button
-			Thread.sleep(1000);
+			Thread.sleep(1500);
 			// interacting with email send email format elements
 			driver.findElement(By.cssSelector(".agP.aFw")).click(); // clicks on To field
 			driver.findElement(By.cssSelector(".agP.aFw")).sendKeys(email, Keys.ENTER); // enter email
