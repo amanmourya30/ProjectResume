@@ -1,0 +1,7 @@
+Your choice of font is important, but the kind of “family” you choose is project-specific, and we won’t discuss it here except to make one point: 
+the conventional wisdom among Web designers that only sans-serif fonts are suitable for body text is just a rule of thumb.
+Although serif fonts, with their greater complexity, may tend to be less effective at small sizes, there are many other factors to consider. 
+
+A diminutive x-height, for example, could impair the readability of a font from either camp. 
+Some serif fonts are highly legible and attractive for paragraph text if they are set properly. 
+Matthew Carter’s screen-sympathetic Georgia is a case in point.
