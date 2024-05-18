@@ -25,7 +25,7 @@ public class FileReaderPractice {
 
 	public static void main(String[] args) {
 
-		String filePath = "C:\\Users\\Xtena\\OneDrive\\Desktop\\EmailBody.txt";
+		String filePath = "./Files//EmailBody.txt";
 		String fileContent = readFileToString(filePath);
 		System.out.println(fileContent);
 
